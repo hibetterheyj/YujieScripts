@@ -65,13 +65,13 @@ def play(frequency: float, time: float):
     stream.stop_stream()
     stream.close()
     
-def startRing():
+def startRing(duration = 1.0):
     for i in range(4):
-        play((i+3)*100, 0.25)
+        play((i+3)*100, duration/4)
         
-def endRing():
+def endRing(duration = 1.0):
     for i in range(4):
-        play((6-i)*100, 0.25)
+        play((6-i)*100, duration/4)
 
 # if __name__ == "__main__":
 #     play(400, 1)
