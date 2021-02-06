@@ -1,11 +1,11 @@
-"""CheckerboardCreator.py
+"""checkerboard_creator.py
 
 TODO: add other calibration pattern like https://github.com/opencv/opencv/blob/master/doc/pattern_tools/gen_pattern.py
     TODO: make_circles_pattern
     TODO: make_acircles_pattern
 origin: https://github.com/ProximaB/Camera-Calibration-Pattern-Generator
 
-usage: CheckerboardCreator.py [-h] -r ROWS_GRID_NUM -c COLUMNS_GRID_NUM
+usage: checkerboard_creator.py [-h] -r ROWS_GRID_NUM -c COLUMNS_GRID_NUM
                               [-s BLOCK_SIZE_MM] [-o OUTPUT_FILE_NAME]
                               [-d OUTPUT_PATH] [-b BASE_COLOR]
 
@@ -26,13 +26,16 @@ optional arguments:
                         Color of rectangle, background will be set to its
                         inverted color. (rrr,ggg,bbb)
 examples:
-  py CheckerboardCreator.py -r 2 -c 2
-  py CheckerboardCreator.py -r 2 -c 2 -s 30 -o 2x2
-  py CheckerboardCreator.py -r 10 -c 8 -d ./results -o A4_20px
-  py CheckerboardCreator.py -r 7 -c 8 -s 30 -o A4 -d results -b (20,30,80)
+    python checkerboard_creator.py -r 2 -c 2
+    python checkerboard_creator.py -r 2 -c 2 -s 30 -o 2x2
+    python checkerboard_creator.py -r 10 -c 8 -d ./results -o A4_20px
+    python checkerboard_creator.py -r 7 -c 8 -s 30 -o A4 -d results -b (20,30,80)
 
-  # Example: create a checkerboard pattern in file chessboard.svg with 9 rows, 6 columns and a square size of 25mm
-  python CheckerboardCreator.py -r 6 -c 9 -s 25 -o 6_9
+    # Example
+    # create a checkerboard pattern in file chessboard.svg with 9 rows, 6 columns and a square size of 25mm
+        python checkerboard_creator.py -r 6 -c 9 -s 25 -d ./calibre_file -o 6_9_25
+    # create a checkerboard pattern in file chessboard.svg with 5 rows, 7 columns and a square size of 20mm
+        python checkerboard_creator.py -r 5 -c 7 -s 20 -d ./calibre_file -o 5x7_20
 """
 
 import numpy as np
