@@ -1,30 +1,18 @@
+"""all_pdf_dl.py
+## Description: download all PDFs from url
+
+## Example
+- one pdf
+    python all_pdf_dl.py -l https://memento.epfl.ch/academic-calendar/ --save-here
+- many pdfs
+    python all_pdf_dl.py -l https://idsc.ethz.ch/education/lectures/recursive-estimation.html
+"""
+
 import os
 import requests
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import argparse
-
-#%% Example
-# one pdf
-#   python all_pdf_dl.py -l https://memento.epfl.ch/academic-calendar/ --save-here
-# many pdfs
-#   python all_pdf_dl.py -l https://idsc.ethz.ch/education/lectures/recursive-estimation.html
-
-#%% TODO
-# rewrite as a function [okay]
-# add argparse [okay]
-#   print name all note
-#   set save folder
-#   TODO: download all files
-# update running examples [okay]
-# TODO: merge files with the same name
-# TODO: save subfoldname as webpagename -> change all webpage as underscore case
-# TODO: update to other type of files using class
-# TODO: download files with name containing non-latin characters
-# TODO: add tqdm viz
-# TODO: add file selection
-# TODO: add log-in
-# TODO: modify according to style guide
 
 #%% Functions
 def all_pdf_download(args):
@@ -98,3 +86,19 @@ if __name__ == "__main__":
 #     filename = os.path.join(folder_location,link['href'].split('/')[-1])
 #     with open(filename, 'wb') as f:
 #         f.write(requests.get(urljoin(url,link['href'])).content)
+
+#%% TODO
+# rewrite as a function [okay]
+# add argparse [okay]
+#   print name all note
+#   set save folder
+#   TODO: download all files
+# update running examples [okay]
+# TODO: merge files with the same name
+# TODO: save subfoldname as webpagename -> change all webpage as underscore case
+# TODO: update to other type of files using class
+# TODO: download files with name containing non-latin characters
+# TODO: add tqdm viz
+# TODO: add file selection
+# TODO: add log-in
+# TODO: modify according to style guide
