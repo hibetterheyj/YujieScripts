@@ -3,13 +3,13 @@
 
 ## Example
 - one pdf
-    python all_files_dl.py -l https://memento.epfl.ch/academic-calendar/ --save-here
+    python all_files_dl.py -l https://memento.epfl.ch/academic-calendar/ --here
 - many pdf and zip
-    python all_files_dl.py -l http://rpg.ifi.uzh.ch/teaching.html --save-here
+    python all_files_dl.py -l http://rpg.ifi.uzh.ch/teaching.html --here
     # only download zip
-    python all_files_dl.py -l http://rpg.ifi.uzh.ch/teaching.html --save-here -t zip
+    python all_files_dl.py -l http://rpg.ifi.uzh.ch/teaching.html -t zip --here
     # only download pdf
-    python all_files_dl.py -l http://rpg.ifi.uzh.ch/teaching.html --save-here -t pdf
+    python all_files_dl.py -l http://rpg.ifi.uzh.ch/teaching.html -t pdf --here
 
 ## Download all files given a specific type in ubuntu can also use
 # only download zip
@@ -40,7 +40,7 @@ def type_all_download(args, soup, type_i, folder_path):
             print("[{}/{}] {}".format(counter+1, len(search_res), filename))
         with open(file_save_path, 'wb') as f:
             f.write(requests.get(urljoin(args.link,link['href'])).content)
-    print("====== 3. Finished!!! ======")
+    print("====== 3. Finished! ======")
 
 if __name__ == "__main__":
     print("############ all_files_dl.py ############")
@@ -53,8 +53,8 @@ if __name__ == "__main__":
     parser.add_argument('--print-all', dest='print_all', action='store_true',
                         help="print all filename")
     parser.set_defaults(print_all=True)
-    # --save-here
-    parser.add_argument('--save-here', dest='save_here', action='store_true',
+    # -h/--here
+    parser.add_argument('--here', dest='save_here', action='store_true',
                         help="save files here")
     parser.set_defaults(save_here=False)
     # --save--folder
@@ -82,6 +82,7 @@ if __name__ == "__main__":
     for i, type_i in enumerate(args.type_list):
         print("############ ({}/{}) *.{} ############".format(i+1, len(args.type_list), type_i))
         type_all_download(args, soup, type_i, folder_path)
+    print("FINISH ALL")
 
 #%% TODO
 # rewrite as a function [okay]

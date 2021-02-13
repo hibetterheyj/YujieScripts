@@ -1,4 +1,4 @@
-"""
+"""test_argparse.py
 > python test_argparse.py -n A
 ====== Experiment: test_argparse ======
 A only extract set1
@@ -10,8 +10,12 @@ with GPU: False
 Yujie extract all
 w/o feature; training set ratio: 0.5
 with GPU: True
-"""
 
+############ Warning ############
+`-h` cannot be used!!!
+############ Warning ############
+"""
+#%% code
 import argparse
 
 ## Secondary option
