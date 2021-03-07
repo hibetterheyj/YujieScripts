@@ -25,6 +25,8 @@
             <Item>\Config.Msi</Item>
             <Item>*\.git\</Item>
             <Item>\OneDrive - 同济大学\</Item>
+            <Item>\SoftWare\TeamViewer_15.5.3_Green\</Item>
+            <Item>\MOOC\</Item>
         </Exclude>
         <TimeSpan Type="None">0</TimeSpan>
         <SizeMin Unit="None">0</SizeMin>

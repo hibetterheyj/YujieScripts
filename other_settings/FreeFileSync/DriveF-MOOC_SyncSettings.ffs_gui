@@ -6,7 +6,7 @@
         <IgnoreTimeShift/>
     </Compare>
     <Synchronize>
-        <Variant>Mirror</Variant>
+        <Variant>Update</Variant>
         <DetectMovedFiles>false</DetectMovedFiles>
         <DeletionPolicy>RecycleBin</DeletionPolicy>
         <VersioningFolder Style="Replace"/>
@@ -20,10 +20,6 @@
             <Item>\$Recycle.Bin\</Item>
             <Item>\RECYCLE?\</Item>
             <Item>*\thumbs.db</Item>
-            <Item>\Misc\</Item>
-            <Item>\DJI_Action\</Item>
-            <Item>\ImageArchive\</Item>
-            <Item>\digiKam_database\</Item>
         </Exclude>
         <TimeSpan Type="None">0</TimeSpan>
         <SizeMin Unit="None">0</SizeMin>
@@ -31,8 +27,8 @@
     </Filter>
     <FolderPairs>
         <Pair>
-            <Left>G:\</Left>
-            <Right>I:\G</Right>
+            <Left>F:\MOOC</Left>
+            <Right>K:\MOOC</Right>
         </Pair>
     </FolderPairs>
     <Errors Ignore="false" Retry="0" Delay="5"/>
