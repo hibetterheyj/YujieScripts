@@ -19,9 +19,11 @@ wget -r -l1 -H -t1 -nd -N -np -A.pdf -erobots=off http://rpg.ifi.uzh.ch/teaching
 """
 
 import os
+
 # pip install requests
 import requests
 from urllib.parse import urljoin
+
 # pip install beautifulsoup4
 from bs4 import BeautifulSoup
 import argparse
@@ -33,38 +35,54 @@ def type_all_download(args, soup, type_i, folder_path):
     print("{} files found!!!".format(len(search_res)))
     print("====== 2. Start downloading ======")
     for counter, link in enumerate(search_res):
-        #Name the pdf files using the last portion of each link which are unique in this case
+        # Name the pdf files using the last portion of each link which are unique in this case
         filename = link['href'].split('/')[-1]
         file_save_path = os.path.join(folder_path,link['href'].split('/')[-1])
         if args.print_all:
-            print("[{}/{}] {}".format(counter+1, len(search_res), filename))
+            print("[{}/{}] {}".format(counter + 1, len(search_res), filename))
         with open(file_save_path, 'wb') as f:
             f.write(requests.get(urljoin(args.link,link['href'])).content)
     print("====== 3. Finished! ======")
+
 
 if __name__ == "__main__":
     print("############ all_files_dl.py ############")
     parser = argparse.ArgumentParser(description='Test argparse')
     ## Main option
     # -l/--link
-    parser.add_argument('-l', '--link', required=True, type=str,
-                        help='write down site name')
+    parser.add_argument(
+        '-l', '--link', required=True, type=str, help="write down site name"
+    )
     # --print-all
-    parser.add_argument('--print-all', dest='print_all', action='store_true',
-                        help="print all filename")
+    parser.add_argument(
+        '--print-all', dest='print_all', action='store_true', help="print all filename"
+    )
     parser.set_defaults(print_all=True)
     # -h/--here
-    parser.add_argument('--here', dest='save_here', action='store_true',
-                        help="save files here")
+    parser.add_argument(
+        '--here', dest='save_here', action='store_true', help="save files here"
+    )
     parser.set_defaults(save_here=False)
     # --save--folder
     # default setting -> Downloads/ in user’s home directory obtained by (os.path.expanduser('~'))
-    parser.add_argument('-f', '--folder_path', default=r""+os.path.join(os.path.expanduser('~'), "Downloads"), 
-                        type=str, help='save files in the given folder')
+    parser.add_argument(
+        '-f',
+        '--folder_path',
+        default=r"" + os.path.join(os.path.expanduser('~'), 'Downloads'),
+        type=str,
+        help="save files in the given folder",
+    )
     ## type list
-    parser.add_argument('-t', '--type', action='store', dest='type_list',
-                        type=str, nargs='*', default=['pdf', 'zip', 'rar'],
-                        help="the type of saved files. examples: -t pdf zip rar")
+    parser.add_argument(
+        '-t',
+        '--type',
+        action='store',
+        dest='type_list',
+        type=str,
+        nargs='*',
+        default=['pdf', 'zip', 'rar'],
+        help="the type of saved files. examples: -t pdf zip rar",
+    )
 
     args = parser.parse_args()
 
@@ -73,14 +91,19 @@ if __name__ == "__main__":
         folder_path = os.getcwd()
     else:
         folder_path = args.folder_path
-        if not os.path.exists(args.folder_path):os.mkdir(args.folder_path)
+        if not os.path.exists(args.folder_path):
+            os.mkdir(args.folder_path)
     print("SAVE_PATH: ", folder_path)
     response = requests.get(args.link, headers={'User-Agent': 'Custom'})
-    soup= BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, 'html.parser')
 
     print("TYPE_LIST: ", args.type_list)
     for i, type_i in enumerate(args.type_list):
-        print("############ ({}/{}) *.{} ############".format(i+1, len(args.type_list), type_i))
+        print(
+            "############ ({}/{}) *.{} ############".format(
+                i + 1, len(args.type_list), type_i
+            )
+        )
         type_all_download(args, soup, type_i, folder_path)
     print("FINISH ALL")
 
@@ -91,8 +114,8 @@ if __name__ == "__main__":
 # update running examples [okay]
 # detect and categorize other file types, e.g., zip, rar, code template (such as .py, .m files) [okay]
 #   set save folder
-    # windows default [okay]
-    # TODO: linux default
+#   windows default [okay]
+#   TODO: linux default
 #   TODO: download all files or not
 # TODO: merge files with the same name
 # TODO: save subfoldname as webpagename -> change all webpage as underscore case

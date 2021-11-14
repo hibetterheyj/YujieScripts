@@ -28,4 +28,4 @@ print("After 2.5 seconds ...")
 time.sleep(2.5)
 
 print("#### Start lasting 2 seconds ####")
-startRing(duration = 2)
+startRing(duration=2)

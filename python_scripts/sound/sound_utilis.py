@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#conda install pyaudio
+# conda install pyaudio
 import pyaudio
 import struct
 import math
@@ -49,8 +49,8 @@ def data_for_freq(frequency: float, time: float = None):
     for i in range(remainder_frames):
         wavedata.append(0)
 
-    number_of_bytes = str(len(wavedata))  
-    wavedata = struct.pack(number_of_bytes + 'h', *wavedata)
+    number_of_bytes = str(len(wavedata))
+    wavedata = struct.pack(number_of_bytes + "h", *wavedata)
 
     return wavedata
 
@@ -64,14 +64,17 @@ def play(frequency: float, time: float):
     stream.write(frames)
     stream.stop_stream()
     stream.close()
-    
-def startRing(duration = 1.0):
+
+
+def startRing(duration=1.0):
     for i in range(4):
-        play((i+3)*100, duration/4)
-        
-def endRing(duration = 1.0):
+        play((i + 3) * 100, duration / 4)
+
+
+def endRing(duration=1.0):
     for i in range(4):
-        play((6-i)*100, duration/4)
+        play((6 - i) * 100, duration / 4)
+
 
 # if __name__ == "__main__":
 #     play(400, 1)
