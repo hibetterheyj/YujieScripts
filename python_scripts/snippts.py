@@ -1,7 +1,4 @@
-m# -*- coding: utf-8 -*-
-"""
-snippts
-"""
+# -*- coding: utf-8 -*-
 
 ## 从txt读取文件
 # https://blog.csdn.net/shandong_chu/article/details/70173952
@@ -10,7 +7,7 @@ f2 = open("./image/abc.txt","r")
 lines = f2.readlines()
 for line in lines:
     print line
-    
+
 ## 取奇数偶数
 numArr = [i for i in range(1,10)]
 wArr = numArr[::2] # odd 奇数位置
@@ -37,7 +34,7 @@ start = time.clock() # time.time()
 def naiveFib(n):
     if n==1 or n==0:
         return 1
-    return naiveFib(n-1) + naiveFib(n-2) 
+    return naiveFib(n-1) + naiveFib(n-2)
 b = naiveFib(35)
 end = time.clock() # time.time()
 print(end-start)
@@ -52,7 +49,7 @@ while True:
         lines.append(numArray)
     except:
         break
-    
+
 ## 单行读取转化为int列表
 singleLine = input().split()
 dim = [int(ele) for ele in singleLine]

@@ -1,4 +1,17 @@
-"""test_argparse.py
+#!/usr/bin/env python3
+# -*-coding:utf-8 -*-
+# =============================================================================
+"""
+@Author        :   Yujie He
+@File          :   test_argparse.py
+@Date created  :   2021/11/21
+@Maintainer    :   Yujie He
+@Email         :   yujie.he@epfl.ch
+"""
+# =============================================================================
+"""
+The module provides snippets to use argparse
+Example:
 > python test_argparse.py -n A
 ====== Experiment: test_argparse ======
 A only extract set1
@@ -10,12 +23,10 @@ with GPU: False
 Yujie extract all
 w/o feature; training set ratio: 0.5
 with GPU: True
-
-############ Warning ############
-`-h` cannot be used!!!
-############ Warning ############
 """
-#%% code
+# =============================================================================
+
+
 import argparse
 
 ## Secondary option

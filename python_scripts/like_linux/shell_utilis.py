@@ -1,7 +1,5 @@
 import os
 
-## TODO: list files with specfic extensions
-
 ## make a dir just as in Linux
 def mkdir(path):
     path = path.strip()
@@ -17,7 +15,6 @@ def mkdir(path):
 
 
 ## filter files with specfic extensions
-# TODO: write a class
 # example:
 # files = os.listdir(CLIPS_DIR)
 # videoList = list(filter(seq_file_filter, files))
@@ -34,7 +31,7 @@ def seq_file_filter_mp4(f):
     else:
         return False
 
-
-# Reference:
-# stackoverflow - https://stackoverflow.com/questions/974071/python-library-for-playing-fixed-frequency-sound
-# https://stackoverflow.com/questions/974071/python-library-for-playing-fixed-frequency-sound
+"""
+Reference:
+1. https://stackoverflow.com/questions/5351766/use-fnmatch-filter-to-filter-files-by-more-than-one-possible-file-extension
+"""

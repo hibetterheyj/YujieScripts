@@ -1,12 +1,18 @@
+#!/usr/bin/env python3
 # -*-coding:utf-8 -*-
+# =============================================================================
 """
-@File    :   test_timer.py
-@Time    :   2021/11/14 13:06:24
-@Author  :   Yujie He
-@Version :   1.0
-@Contact :   yujie.he@epfl.ch
-@State   :   Dev
+@Author        :   Yujie He
+@File          :   test_timer.py
+@Date created  :   2021/11/14
+@Maintainer    :   Yujie He
+@Email         :   yujie.he@epfl.ch
 """
+# =============================================================================
+"""
+The module provides snippets for compute processing time
+"""
+# =============================================================================
 
 
 from os import times

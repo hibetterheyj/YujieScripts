@@ -76,11 +76,8 @@ def endRing(duration=1.0):
         play((6 - i) * 100, duration / 4)
 
 
-# if __name__ == "__main__":
-#     play(400, 1)
-#     startRing()
-#     endRing()
+"""
+Reference:
+https://stackoverflow.com/questions/974071/python-library-for-playing-fixed-frequency-sound
+"""
 
-# Reference:
-# Python 用 os.listdir() 获取文件列表和筛选特定格式文件
-# https://blog.csdn.net/qq_38463737/article/details/107875930
