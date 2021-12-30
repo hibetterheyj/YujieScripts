@@ -24,7 +24,7 @@ import moviepy.editor as mpy
 img_folder = "./test/"
 img_files = sorted(fnmatch.filter(os.listdir(img_folder), "*.png"))
 print("{} frames detected".format(len(img_files)))
-img_seq = [img_folder + img for img in img_files]
+img_seq = [os.path.join(img_folder, img) for img in img_files]
 
 #%% Test sample1
 print("## Test sample1: from image sequence to video & gif")
