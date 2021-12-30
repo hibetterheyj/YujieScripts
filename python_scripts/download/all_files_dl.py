@@ -34,14 +34,18 @@ def type_all_download(args, soup, type_i, folder_path):
     search_res = soup.select("a[href$='.{}']".format(type_i))
     print("{} files found!!!".format(len(search_res)))
     print("====== 2. Start downloading ======")
+    total_num = len(search_res)
     for counter, link in enumerate(search_res):
         # Name the pdf files using the last portion of each link which are unique in this case
         filename = link['href'].split('/')[-1]
-        file_save_path = os.path.join(folder_path,link['href'].split('/')[-1])
+        file_save_path = os.path.join(folder_path, link['href'].split('/')[-1])
         if args.print_all:
-            print("[{}/{}] {}".format(counter + 1, len(search_res), filename))
-        with open(file_save_path, 'wb') as f:
-            f.write(requests.get(urljoin(args.link,link['href'])).content)
+            print("[{}/{}] {}".format(counter + 1, total_num, filename))
+        if not os.path.exists(file_save_path):
+            with open(file_save_path, 'wb') as f:
+                f.write(requests.get(urljoin(args.link, link['href'])).content)
+        else:
+            print("File existed, skipped")
     print("====== 3. Finished! ======")
 
 
@@ -51,7 +55,11 @@ if __name__ == "__main__":
     ## Main option
     # -l/--link
     parser.add_argument(
-        '-l', '--link', required=True, type=str, help="write down site name"
+        '-l',
+        '--link',
+        type=str,
+        default="http://rpg.ifi.uzh.ch/teaching.html",
+        help="write down site name",
     )
     # --print-all
     parser.add_argument(
@@ -115,12 +123,10 @@ if __name__ == "__main__":
 # detect and categorize other file types, e.g., zip, rar, code template (such as .py, .m files) [okay]
 #   set save folder
 #   windows default [okay]
-#   TODO: linux default
-#   TODO: download all files or not
-# TODO: merge files with the same name
+#   linux default [okay] $HOME/Downloads
+# check existing files [okay]
 # TODO: save subfoldname as webpagename -> change all webpage as underscore case
 # TODO: download files with name containing non-latin characters
 # TODO: add tqdm viz
 # TODO: add file selection
 # TODO: add log-in
-# TODO: modify according to style guide
